@@ -1,22 +1,21 @@
 name: 'Hello World'
 description: 'Greet someone'
-inputs: # RECEBE DO WORKFLOW
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+inputs: 
+  key1:  # id of input
+    description: 'key1'
     required: true
-    default: 'World' # o who-to-great usa este dafult caso não seja setado no workflow
-outputs: # EXPOE O VALOR PARA O WORKFLOW
-  random-number:
+    default: 'World' 
+outputs: 
+  key3:
     description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.random-number }}
-    #recebe o steps -> id: random-number-generator -> random-number = numero gerado pelo echo $RANDOM ()
+    value: ${{ steps.key2.outputs.key3 }}
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}. # recebe default da action caso não seja setado no workflow
+    - run: echo Hello ${{ inputs.key1 }}. 
       shell: bash
-    - id: random-number-generator # id do outputs e a saida é random-number
-      run: echo "::set-output name=random-number::$(echo $RANDOM)"
+    - id: key2 
+      run: echo "::set-output name=key3::$(echo $RANDOM)"
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH # O caminho onde uma ação está localizada. Esta propriedade só é compatível com ações compostas. Você pode usar este caminho para acessar arquivos localizados no mesmo repositório da ação.
       shell: bash          
