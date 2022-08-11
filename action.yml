@@ -1,21 +1,21 @@
 name: 'Hello World'
 description: 'Greet someone'
 inputs: 
-  key1:  # id of input
-    description: 'key1'
+  key-one:  # id of input
+    description: 'key-one'
     required: true
     default: 'World' 
 outputs: 
-  key3:
+  key-three:
     description: "Random number"
-    value: ${{ steps.key2.outputs.key3 }}
+    value: ${{ steps.key-two.outputs.key-three }}
 runs:
   using: "composite"
   steps:
-    - run: echo Hello ${{ inputs.key1 }}. 
+    - run: echo Hello ${{ inputs.key-um }}. 
       shell: bash
-    - id: key2 
-      run: echo "::set-output name=key3::$(echo $RANDOM)"
+    - id: key-two 
+      run: echo "::set-output name=key-three::$(echo $RANDOM)"
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH # O caminho onde uma ação está localizada. Esta propriedade só é compatível com ações compostas. Você pode usar este caminho para acessar arquivos localizados no mesmo repositório da ação.
       shell: bash          
