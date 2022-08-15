@@ -2,8 +2,8 @@ name: 'find the specific suffix to compose the version format'
 description: 'specific suffix'
 
 outputs: # EXPOE O VALOR PARA O WORKFLOW
-  random-number:
-    description: "Random number"
+  prerelease_suffix:
+    description: "prerelease suffix"
     value: ${{ steps.get-prerelease-suffix.outputs.prerelease_suffix }}
     
 runs:
