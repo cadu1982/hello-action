@@ -68,9 +68,9 @@ runs:
       with:
         file: ${{ inputs.dockerfile != '' && inputs.dockerfile || 'Dockerfile' }}
         push: true
-        tags: |
-            ghcr.io/${{ inputs.github-repo-owner }}/${{ inputs.github-repo-name }}:latest
-            ghcr.io/${{ inputs.github-repo-owner }}/${{ inputs.github-repo-name }}:${{ inputs.general-tag }}
+        tags: ghcr.io/${{ inputs.github-repo-owner }}/${{ inputs.github-repo-name }}:${{ inputs.general-tag }}
+            # ghcr.io/${{ inputs.github-repo-owner }}/${{ inputs.github-repo-name }}:latest
+            
         # build-args: |
         #   USER_FOR_NUGET=${{ inputs.user-for-nuget }}
         #   PAT_FOR_NUGET=${{ inputs.pat-for-nuget }}
